@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>کافه رستوران شاما — قهوه تازه، منوی ایتالیایی، شبِ طلایی</title>
+<meta name="description" content="کافه رستوران شاما در تهران؛ منوی ایتالیایی، قهوه تازه‌رست، سفارش آنلاین، رزرو میز و باشگاه مشتریان. تجربه‌ای مدرن از یک کافه دنج.">
+<meta name="theme-color" content="#0A0806">
+<meta property="og:title" content="کافه رستوران شاما">
+<meta property="og:description" content="منوی ایتالیایی، قهوه تازه‌رست و شب‌های طلایی — سفارش آنلاین و رزرو میز.">
+<meta property="og:type" content="website">
+<meta property="og:image" content="assets/img/site/cover.jpg">
+<link rel="icon" href="assets/img/site/favicon.svg" type="image/svg+xml">
+<link rel="preload" href="assets/fonts/vazirmatn.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="assets/fonts/playfair.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="css/tokens.css">
+<link rel="stylesheet" href="css/base.css">
+<link rel="stylesheet" href="css/nav.css">
+<link rel="stylesheet" href="css/hero.css">
+<link rel="stylesheet" href="css/cup.css">
+<link rel="stylesheet" href="css/story.css">
+<link rel="stylesheet" href="css/menu.css">
+<link rel="stylesheet" href="css/cart.css">
+<link rel="stylesheet" href="css/booking.css">
+<link rel="stylesheet" href="css/visit.css">
+</head>
+<body>
+
+<div id="cursor-halo" aria-hidden="true"></div>
+<div id="scroll-progress" aria-hidden="true"></div>
+
+<!-- ═══════════════════════════════════════════════ NAV -->
+<header class="nav" id="nav">
+  <div class="nav__inner shell">
+    <a class="brand" href="#hero" aria-label="شاما — خانه">
+      <span class="brand__mark">
+        <svg viewBox="0 0 44 44" fill="none" aria-hidden="true">
+          <circle cx="22" cy="22" r="21" stroke="url(#bg1)" stroke-width="1"/>
+          <path d="M15 16.5h14c0 7.2-3.1 11.4-7 11.4s-7-4.2-7-11.4Z" stroke="url(#bg1)" stroke-width="1.4"/>
+          <path d="M29 18.5h2.6a2.9 2.9 0 0 1 0 5.8H28.6" stroke="url(#bg1)" stroke-width="1.4"/>
+          <path d="M18 31.5h8" stroke="url(#bg1)" stroke-width="1.4" stroke-linecap="round"/>
+          <path d="M20.2 12.2c-.9-1.5.9-2.4 0-4M24 12.2c-.9-1.5.9-2.4 0-4" stroke="url(#bg1)" stroke-width="1.1" stroke-linecap="round" opacity=".8"/>
+          <defs>
+            <linearGradient id="bg1" x1="4" y1="4" x2="40" y2="40">
+              <stop stop-color="#F7E7BE"/><stop offset=".55" stop-color="#C9A227"/><stop offset="1" stop-color="#8A6329"/>
+            </linearGradient>
+          </defs>
+        </svg>
+      </span>
+      <span class="brand__txt">
+        <span class="brand__fa">شاما</span>
+        <span class="brand__en latin">SHAMA</span>
+      </span>
+    </a>
+
+    <nav class="nav__links" id="nav-links" aria-label="ناوبری اصلی">
+      <a href="#menu">منو</a>
+      <a href="#story">داستان ما</a>
+      <a href="#reserve">رزرو میز</a>
+      <a href="#club">باشگاه مشتریان</a>
+      <a href="#visit">تماس</a>
+    </nav>
+
+    <div class="nav__actions">
+      <button class="nav__cart" id="nav-cart" type="button" aria-label="سبد خرید">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"/><path d="M3 6h18"/><path d="M16 10a4 4 0 0 1-8 0"/>
+        </svg>
+        <span class="nav__count" id="cart-count" data-empty="true">۰</span>
+      </button>
+      <a class="btn btn--ghost btn--sm nav__cta" href="#menu">سفارش آنلاین</a>
+      <button class="nav__burger" id="nav-burger" type="button" aria-label="منو" aria-expanded="false">
+        <span></span><span></span>
+      </button>
+    </div>
+  </div>
+  <div class="nav__mobile" id="nav-mobile" hidden>
+    <a href="#menu">منو</a>
+    <a href="#story">داستان ما</a>
+    <a href="#reserve">رزرو میز</a>
+    <a href="#club">باشگاه مشتریان</a>
+    <a href="#visit">تماس و آدرس</a>
+    <div class="nav__mobile-foot">
+      <span class="small muted">هر روز ۱۴:۰۰ تا ۲۳:۴۵</span>
+      <a class="btn btn--gold btn--sm" href="#menu">سفارش آنلاین</a>
+    </div>
+  </div>
+</header>
+
+<main id="app">
+
+  <!-- ═══════════════════════════════════════════════ HERO -->
+  <section class="hero" id="hero">
+    <div class="hero__glow" aria-hidden="true"></div>
+    <div class="hero__orbit" aria-hidden="true">
+      <span class="hero__ring hero__ring--1"></span>
+      <span class="hero__ring hero__ring--2"></span>
+      <span class="hero__ring hero__ring--3"></span>
+    </div>
+
+    <div class="hero__stage shell">
+      <div class="hero__copy">
+        <p class="eyebrow hero__eyebrow">کافه رستوران · تهران</p>
+        <h1 class="hero__title">
+          <span class="hero__title-line">قهوه‌ی تازه،</span>
+          <span class="hero__title-line gold-text">شبِ طلایی</span>
+        </h1>
+        <p class="hero__sub">
+          منوی ایتالیایی شاما؛ از خمیر تازه و پنیر موزارلا تا دانه‌های تازه‌رست.
+          سفارش آنلاین، رزرو میز و باشگاه مشتریان — در یک تجربه‌ی یکدست.
+        </p>
+        <div class="hero__cta">
+          <a class="btn btn--gold" href="#menu">
+            دیدن منو
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5"/><path d="m12 5-7 7 7 7"/></svg>
+          </a>
+          <a class="btn btn--ghost" href="#reserve">رزرو میز</a>
+        </div>
+
+        <dl class="hero__stats">
+          <div><dt>امتیاز مهمانان</dt><dd><bdi class="num">۴٫۸</bdi> <span class="hero__stats-of">از ۵</span></dd></div>
+          <div><dt>آیتم منو</dt><dd class="num">۷۱</dd></div>
+          <div><dt>هر روز</dt><dd><bdi class="num">۱۴:۰۰ تا ۲۳:۴۵</bdi></dd></div>
+        </dl>
+      </div>
+
+      <div class="hero__art" aria-hidden="true">
+        <figure class="hero__card hero__card--main" data-depth="18">
+          <img src="assets/img/menu/c5_0.webp" alt="" width="700" height="700" fetchpriority="high">
+          <figcaption>لته‌آرت دستی</figcaption>
+        </figure>
+        <figure class="hero__card hero__card--a" data-depth="34">
+          <img src="assets/img/menu/c0_0.webp" alt="" width="700" height="700" loading="lazy">
+        </figure>
+        <figure class="hero__card hero__card--b" data-depth="26">
+          <img src="assets/img/menu/c9_0.webp" alt="" width="700" height="700" loading="lazy">
+        </figure>
+        <span class="hero__seal">
+          <svg viewBox="0 0 100 100" aria-hidden="true">
+            <defs><path id="sealPath" d="M50,50 m-36,0 a36,36 0 1,1 72,0 a36,36 0 1,1 -72,0"/></defs>
+            <text><textPath href="#sealPath" startOffset="0">SHAMA CAFÉ · TEHRAN · SINCE 2019 · </textPath></text>
+          </svg>
+        </span>
+      </div>
+    </div>
+
+    <a class="hero__scroll" href="#pour" aria-label="اسکرول کنید">
+      <span class="hero__scroll-line"></span>
+      <span class="tiny">اسکرول کنید</span>
+    </a>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════ POUR (scroll-driven cup) -->
+  <section class="pour" id="pour" aria-label="فنجان شاما">
+    <div class="pour__sticky">
+      <div class="pour__inner shell">
+        <div class="pour__copy">
+          <div class="pour__step is-active" data-step="0">
+            <p class="eyebrow">۰۱ — انتخاب دانه</p>
+            <h2 class="pour__title">از دانه‌ی تازه‌رست<br><span class="gold-text">شروع می‌شود</span></h2>
+            <p class="pour__text">هر هفته رست تازه؛ عربیکای برزیل با بدنه‌ی شکلاتی و اسیدیتی ملایم.</p>
+          </div>
+          <div class="pour__step" data-step="1">
+            <p class="eyebrow">۰۲ — استخراج</p>
+            <h2 class="pour__title">۲۵ ثانیه<br><span class="gold-text">دقت</span></h2>
+            <p class="pour__text">اسپرسوی دوبل با فشار ۹ بار؛ کرمای غلیظ به رنگ عسل تیره.</p>
+          </div>
+          <div class="pour__step" data-step="2">
+            <p class="eyebrow">۰۳ — لته‌آرت</p>
+            <h2 class="pour__title">و آن‌گاه<br><span class="gold-text">هنر روی فنجان</span></h2>
+            <p class="pour__text">شیر بخار‌داده با کاکائو، طرحی دست‌ساز روی سطح قهوه می‌سازد.</p>
+          </div>
+        </div>
+
+        <div class="pour__stage" id="cup-stage">
+          <!-- cup SVG injected by js/cup.js -->
+        </div>
+
+        <div class="pour__meter" aria-hidden="true">
+          <span class="pour__meter-fill"></span>
+          <span class="pour__meter-label tiny num"><span id="cup-pct">۰</span>٪</span>
+        </div>
+      </div>
+      <div class="pour__shadow" aria-hidden="true"></div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════ STORY (agent D) -->
+  <div id="mount-story"></div>
+
+  <!-- ═══════════════════════════════════════════════ MENU (agent A) -->
+  <div id="mount-menu"></div>
+
+  <!-- ═══════════════════════════════════════════════ RESERVE + CLUB (agent C) -->
+  <div id="mount-reserve"></div>
+  <div id="mount-club"></div>
+
+  <!-- ═══════════════════════════════════════════════ GALLERY + VISIT (agent D) -->
+  <div id="mount-gallery"></div>
+  <div id="mount-visit"></div>
+
+</main>
+
+<!-- ═══════════════════════════════════════════════ CART / CHECKOUT (agent B) -->
+<div id="mount-cart"></div>
+<div id="toasts" aria-live="polite"></div>
+
+<script src="js/data.js"></script>
+<script src="js/store.js"></script>
+<script src="js/base.js"></script>
+<script src="js/cup.js"></script>
+<script src="js/story.js"></script>
+<script src="js/menu.js"></script>
+<script src="js/cart.js"></script>
+<script src="js/booking.js"></script>
+<script src="js/visit.js"></script>
+</body>
+</html>

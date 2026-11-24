@@ -1,0 +1,105 @@
+{
+	"data": {
+		"id": 410834,
+		"code": "znkq1e",
+		"hasNewBadge": false,
+		"title": "کافه رستوران شاما",
+		"logo": "https://cdn.snappfood.ir/media/cache/vendor_logo/uploads/images/vendors/logos/67290badb426e.jpg",
+		"cover": "https://cdn.snappfood.ir/media/cache/vendor_cover_menu/uploads/images/vendors/covers/67290c6b28218.jpg",
+		"chainId": 0,
+		"chainCode": "",
+		"chainTitle": "",
+		"branchTitle": "",
+		"chainUrl": null,
+		"cityTitle": "تهران",
+		"cityId": 1,
+		"cityCode": "Tehran",
+		"minOrder": 60000,
+		"hasPackaging": false,
+		"hasCoupon": false,
+		"hasKalabarg": false,
+		"hasFavorite": true,
+		"isPro": false,
+		"hasGroupOrder": false,
+		"isOpen": true,
+		"isOpenNow": true,
+		"address": {
+			"area": "ونک",
+			"address": "بزرگراه محلاتی، جنب مترو بسیج، سمت پارک بسیج، کافه رستوران شاما",
+			"latitude": 35.667442627765,
+			"longitude": 51.48983001709
+		},
+		"schedules": [
+			{
+				"startHour": "14:00:00",
+				"stopHour": "23:45:00",
+				"weekday": 6
+			},
+			{
+				"startHour": "14:00:00",
+				"stopHour": "23:45:00",
+				"weekday": 7
+			},
+			{
+				"startHour": "14:00:00",
+				"stopHour": "23:45:00",
+				"weekday": 1
+			},
+			{
+				"startHour": "14:00:00",
+				"stopHour": "23:45:00",
+				"weekday": 2
+			},
+			{
+				"startHour": "14:00:00",
+				"stopHour": "23:45:00",
+				"weekday": 3
+			},
+			{
+				"startHour": "14:00:00",
+				"stopHour": "23:45:00",
+				"weekday": 4
+			},
+			{
+				"startHour": "14:00:00",
+				"stopHour": "23:45:00",
+				"weekday": 5
+			}
+		],
+		"paymentTypes": [
+			"آنلاین",
+			"اعتباری",
+			"اعتبار جایزه خرید"
+		],
+		"badges": [],
+		"scheduleGroups": [
+			{
+				"startHour": "14:00",
+				"stopHour": "23:45",
+				"weekdays": [
+					"Thursday",
+					"Friday",
+					"Saturday",
+					"Sunday",
+					"Monday",
+					"Tuesday",
+					"Wednesday"
+				]
+			}
+		],
+		"productTypes": [
+			"کافه",
+			"قهوه",
+			"قهوه سرد"
+		],
+		"type": {
+			"title": "رستوران",
+			"code": "RESTAURANT",
+			"schemaType": "Restaurant"
+		},
+		"description": "",
+		"calculateMinOrderByDiscountedProducts": false,
+		"superTypeId": 1
+	},
+	"message": "OK"
+}

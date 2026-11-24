@@ -1,0 +1,81 @@
+/* ============================================================
+   SHAMA — design tokens
+   Palate: soft black + burnished gold + warm cream
+   ============================================================ */
+
+@font-face {
+  font-family: 'Vazirmatn';
+  src: url('../assets/fonts/vazirmatn.woff2') format('woff2 supports variations'),
+       url('../assets/fonts/vazirmatn.woff2') format('woff2-variations');
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Playfair';
+  src: url('../assets/fonts/playfair.woff2') format('woff2');
+  font-weight: 400 900;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Playfair';
+  src: url('../assets/fonts/playfair-italic.woff2') format('woff2');
+  font-weight: 400 900;
+  font-style: italic;
+  font-display: swap;
+}
+
+:root {
+  /* ink */
+  --ink-0: #060504;
+  --ink-1: #0A0806;
+  --ink-2: #100D0A;
+  --ink-3: #17130E;
+  --ink-4: #221B13;
+
+  /* gold */
+  --gold-1: #6E4F26;
+  --gold-2: #B08A4C;
+  --gold-3: #C9A227;
+  --gold-4: #E7C873;
+  --gold-5: #F7E7BE;
+
+  /* cream */
+  --cream: #F2E8D8;
+  --cream-2: #DCCFBB;
+  --cream-3: #A79A85;
+  --cream-4: #6E655A;
+
+  --line: rgba(201, 162, 39, 0.16);
+  --line-2: rgba(201, 162, 39, 0.30);
+  --line-soft: rgba(242, 232, 216, 0.07);
+
+  --gold-grad: linear-gradient(100deg, #8A6329 0%, #E9CD95 26%, #C9A227 48%, #F6E6BE 66%, #9A7233 100%);
+  --gold-grad-flat: linear-gradient(135deg, #C9A227, #E7C873 50%, #B08A4C);
+  --ink-grad: linear-gradient(180deg, #16120D 0%, #0A0806 100%);
+
+  --shadow-sm: 0 2px 8px rgba(0, 0, 0, .5);
+  --shadow-md: 0 18px 40px -18px rgba(0, 0, 0, .85);
+  --shadow-lg: 0 40px 90px -40px rgba(0, 0, 0, .95);
+  --glow-gold: 0 0 0 1px rgba(201, 162, 39, .28), 0 18px 50px -20px rgba(201, 162, 39, .45);
+
+  --r-xs: 8px;
+  --r-sm: 12px;
+  --r-md: 18px;
+  --r-lg: 26px;
+  --r-xl: 38px;
+
+  --font-fa: 'Vazirmatn', 'Segoe UI', Tahoma, sans-serif;
+  --font-display: 'Playfair', 'Vazirmatn', Georgia, serif;
+
+  --shell: 1280px;
+  --gutter: clamp(18px, 4.6vw, 60px);
+
+  --ease: cubic-bezier(.22, 1, .36, 1);
+  --ease-soft: cubic-bezier(.4, 0, .2, 1);
+  --ease-in-out: cubic-bezier(.65, 0, .35, 1);
+
+  --nav-h: 76px;
+  color-scheme: dark;
+}
