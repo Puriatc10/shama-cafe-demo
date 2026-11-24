@@ -146,7 +146,7 @@
   height: 100%;
   object-fit: cover;
   transition: transform 1.2s var(--ease), filter 1.2s;
-  filter: sepia(.2) saturate(1.02) brightness(.9) contrast(1.04);
+  filter: sepia(.05) saturate(1.02) brightness(.98) contrast(1.03);
 }
 .hero__card::after {
   content: "";

@@ -27,18 +27,26 @@
 
   function countTo(el, from, to, dur) {
     if (!el) return;
+    if (el._raf) { cancelAnimationFrame(el._raf); el._raf = 0; }
+    if (el._timer) { clearTimeout(el._timer); el._timer = 0; }
     if (reduce || from === to) { el.textContent = fmt(to); return; }
-    if (el._raf) cancelAnimationFrame(el._raf);
     const t0 = performance.now();
     const total = dur || 640;
+    const finish = () => {
+      if (el._raf) { cancelAnimationFrame(el._raf); el._raf = 0; }
+      if (el._timer) { clearTimeout(el._timer); el._timer = 0; }
+      el.textContent = fmt(to);
+    };
     const step = (t) => {
       const p = Math.min(1, (t - t0) / total);
       const e = 1 - Math.pow(1 - p, 3);
       el.textContent = fmt(Math.round(from + (to - from) * e));
       if (p < 1) el._raf = requestAnimationFrame(step);
-      else el._raf = 0;
+      else finish();
     };
     el._raf = requestAnimationFrame(step);
+    // safety net: rAF can be paused (background tab), the final value must still land
+    el._timer = setTimeout(finish, total + 160);
   }
 
   const ICONS = {
@@ -704,7 +712,7 @@
   ];
   const REF_CODE_RAW = 'SHAMA-' + 4821;
 
-  const C = { wallet: 0, points: 0, spent: 0, claimed: new Set() };
+  const C = { wallet: 0, points: 0, earned: 0, claimed: new Set() };
 
   function walletValue() {
     const st = S.basket.state();
@@ -713,6 +721,18 @@
   function pointsValue() {
     const st = S.basket.state();
     return Number.isFinite(st.points) ? st.points : 1240;
+  }
+
+  // lifetime points, so tiers survive a reload and never drop when rewards are redeemed
+  const EARNED_KEY = 'shama.club.earned.v1';
+  function readEarned() {
+    try {
+      const v = Number(localStorage.getItem(EARNED_KEY));
+      return Number.isFinite(v) && v > 0 ? v : 0;
+    } catch (e) { return 0; }
+  }
+  function saveEarned() {
+    try { localStorage.setItem(EARNED_KEY, String(C.earned)); } catch (e) { /* private mode */ }
   }
 
   /* ------------------------------------------------------------ QR art */
@@ -934,7 +954,7 @@
 
   function paintPoints(root, from) {
     const p = C.points;
-    const earned = p + C.spent; // level follows earned points, so spending never demotes
+    const earned = Math.max(C.earned, p); // lifetime points drive the tier, not the balance
     countTo($('#club-points', root), from == null ? p : from, p);
 
     let idx = 0;
@@ -989,7 +1009,8 @@
     }
     const from = C.points;
     C.points = from - cost;
-    C.spent += cost;
+    C.earned = Math.max(C.earned, from);
+    saveEarned();
     S.basket.state().points = C.points;
     S.emit('points');
 
@@ -1041,6 +1062,7 @@
   function bindClub(root) {
     C.wallet = walletValue();
     C.points = pointsValue();
+    C.earned = Math.max(pointsValue(), readEarned());
     paintWallet(root);
     paintPoints(root);
 

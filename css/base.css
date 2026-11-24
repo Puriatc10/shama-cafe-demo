@@ -420,7 +420,8 @@ p { text-wrap: pretty; }
    studio-white, others are dark scenes. One warm grade keeps the
    page coherent and stops white backgrounds from glowing. */
 main img {
-  filter: sepia(.15) brightness(.9) contrast(1.05) saturate(.96);
+  /* most photos are cut-outs with alpha, so the shadow follows the food */
+  filter: sepia(.06) brightness(.98) contrast(1.03) saturate(1.02) drop-shadow(0 16px 20px rgba(0, 0, 0, .45));
 }
 main .no-grade img,
 main img.no-grade { filter: none; }

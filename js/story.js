@@ -14,6 +14,11 @@
   /* ================================================== STORY */
   const storyMount = document.getElementById('mount-story');
   if (storyMount) {
+    const VALS = ['خمیر تازه', 'قهوه تازه‌رست', 'پنیر موزارلا', 'دسر خانگی', 'موسیقی زنده', 'تراس روباز'];
+    // each half of the track repeats the row twice, so it always stays wider
+    // than the viewport and the 50% loop never exposes a gap
+    const marqueeRow = VALS.concat(VALS).map(function (v) { return '<li>' + v + '</li>'; }).join('');
+
     storyMount.innerHTML = [
       '<section class="section story" id="story" aria-labelledby="story-title">',
       '  <span class="story__glow" aria-hidden="true"></span>',
@@ -64,7 +69,7 @@
       '      </div>',
       '      <div class="story__stat">',
       '        <dt class="story__stat-k">امتیاز مهمانان</dt>',
-      '        <dd class="story__stat-v"><span data-count="4.8" data-dec="1">۰</span><span class="story__stat-den gold-text">/۵</span></dd>',
+      '        <dd class="story__stat-v"><span data-count="4.8" data-dec="1">۰</span><span class="story__stat-den">از ۵</span></dd>',
       '      </div>',
       '      <div class="story__stat">',
       '        <dt class="story__stat-k">از سال</dt>',
@@ -72,16 +77,11 @@
       '      </div>',
       '    </dl>',
 
-      '    <div class="story__marquee">',
+      '    <p class="sr-only">ارزش‌های شاما: خمیر تازه، قهوه تازه‌رست، پنیر موزارلا، دسر خانگی، موسیقی زنده و تراس روباز.</p>',
+      '    <div class="story__marquee" aria-hidden="true">',
       '      <div class="story__track">',
-      '        <ul class="story__vals" aria-label="ارزش‌های شاما">',
-      '          <li>خمیر تازه</li><li>قهوه تازه‌رست</li><li>پنیر موزارلا</li>',
-      '          <li>دسر خانگی</li><li>موسیقی زنده</li><li>تراس روباز</li>',
-      '        </ul>',
-      '        <ul class="story__vals" aria-hidden="true">',
-      '          <li>خمیر تازه</li><li>قهوه تازه‌رست</li><li>پنیر موزارلا</li>',
-      '          <li>دسر خانگی</li><li>موسیقی زنده</li><li>تراس روباز</li>',
-      '        </ul>',
+      '        <ul class="story__vals">' + marqueeRow + '</ul>',
+      '        <ul class="story__vals">' + marqueeRow + '</ul>',
       '      </div>',
       '    </div>',
 
@@ -178,7 +178,7 @@
         '    <img src="assets/img/menu/' + t.img + '.webp" alt="' + t.alt + '" width="641" height="641" loading="lazy" decoding="async">',
         '  </span>',
         '  <svg class="gal__frame" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true" focusable="false">',
-        '    <rect x="0.5" y="0.5" width="99" height="99" pathLength="1" vector-effect="non-scaling-stroke"/>',
+        '    <rect x="0.5" y="0.5" width="99" height="99" vector-effect="non-scaling-stroke"/>',
         '  </svg>',
         t.note ? '  <span class="gal__note">' + t.note + '</span>' : '',
         '  <span class="gal__cap">',

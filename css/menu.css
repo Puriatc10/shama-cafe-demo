@@ -328,6 +328,7 @@
   box-shadow: 0 0 0 4px rgba(201, 162, 39, .08);
 }
 .menu__search:focus-within .menu__search-icon { color: var(--gold-4); }
+.menu__search.is-filled .menu__search-icon { color: var(--gold-4); }
 .menu__search-clear {
   position: absolute;
   inset-inline-end: 6px;
@@ -439,7 +440,8 @@
   display: flex;
   flex-direction: column;
   min-width: 0;
-  padding: 10px 10px 14px;
+  padding: 0 0 14px;
+  overflow: hidden;
   border: 1px solid rgba(201, 162, 39, .11);
   border-radius: 22px;
   background: linear-gradient(180deg, rgba(255, 255, 255, .05), rgba(255, 255, 255, .012));
@@ -457,12 +459,14 @@
   text-align: start;
   color: inherit;
 }
+.menu__card-open:focus-visible { outline-offset: -3px; border-radius: 20px; }
 .menu__card-media {
   display: block;
   position: relative;
   aspect-ratio: 4 / 3;
-  border: 1px solid var(--line);
-  transition: border-color .55s var(--ease), box-shadow .65s var(--ease);
+  border: 0;
+  border-radius: 0;
+  transition: box-shadow .65s var(--ease);
 }
 /* warm multiply tint so white-background photography sinks into the page */
 .menu__card-media::before,
@@ -516,7 +520,7 @@
 
 .menu__card-body {
   display: block;
-  padding: 15px 2px 0;
+  padding: 16px 16px 0;
 }
 .menu__card-name {
   display: -webkit-box;
@@ -548,7 +552,7 @@
   align-items: center;
   justify-content: space-between;
   gap: 12px;
-  margin-top: 10px;
+  margin: 10px 16px 0;
   padding-top: 12px;
   border-top: 1px solid var(--line-soft);
 }
@@ -1048,7 +1052,7 @@
   }
   .menu__sig-list::-webkit-scrollbar { display: none; }
   .menu__sig-card {
-    flex: 0 0 min(78%, 360px);
+    flex: 0 0 min(48%, 360px);
     scroll-snap-align: start;
   }
 }
@@ -1056,7 +1060,7 @@
 @media (max-width: 900px) {
   .menu__dock-inner { flex-wrap: wrap; gap: 10px; }
   .menu__tabs { flex: 1 1 100%; order: 1; }
-  .menu__tools { flex: 1 1 100%; order: 2; }
+  .menu__tools { flex: 1 1 100%; order: 2; justify-content: space-between; }
   .menu__search { flex: 1 1 auto; max-width: 440px; }
   .menu__search-input { width: 100%; }
   .menu__sort-select { width: 138px; }
@@ -1112,7 +1116,7 @@
   .menu__tab { height: 36px; padding: 0 13px; font-size: .78rem; }
   .menu__tab-n { display: none; }
   .menu__sort-select { width: 124px; font-size: .76rem; }
-  .menu__add { padding: 0 12px; height: 34px; font-size: .72rem; }
+  .menu__add { padding: 0 12px; height: 38px; font-size: .74rem; }
   .menu__price { font-size: .94rem; }
   .menu__bar-sum { font-size: .76rem; }
   .menu__bar-count { font-size: .78rem; }

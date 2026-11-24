@@ -504,7 +504,11 @@
     border-block-end: 1px solid var(--line);
   }
   .visit__map {
-    aspect-ratio: 21 / 9;
+    aspect-ratio: 16 / 8.4;
+  }
+  /* stacked layout: keep the CTA right under the contact list */
+  .visit__reserve {
+    margin-block-start: 22px;
   }
 
   .foot__main {

@@ -7,8 +7,6 @@
 
   const S = window.Shama;
   if (!S) return;
-  const U = S.util;
-  const V = S.vendor || {};
 
   const mount = document.getElementById('mount-visit');
   if (!mount) return;
