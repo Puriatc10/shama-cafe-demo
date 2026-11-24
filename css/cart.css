@@ -795,14 +795,14 @@
   letter-spacing: .05em;
   font-size: .92rem;
 }
-textarea.ck__input { height: auto; min-height: 84px; line-height: 1.85; }
+.ck__scroll textarea.ck__input { height: auto; min-height: 84px; line-height: 1.85; }
 .ck__opt {
   color: var(--cream-4);
   font-size: .7rem;
   font-weight: 300;
   margin-inline-start: 4px;
 }
-.field.is-err .ck__input {
+.ck__scroll .field.is-err .ck__input {
   border-color: rgba(208, 130, 95, .62);
   background: rgba(208, 130, 95, .05);
   box-shadow: 0 0 0 4px rgba(208, 130, 95, .07);
@@ -1137,10 +1137,9 @@ textarea.ck__input { height: auto; min-height: 84px; line-height: 1.85; }
   .cart__done { padding-inline: 18px; }
   .cart__title { font-size: 1.3rem; }
   .cart__step { font-size: .6rem; letter-spacing: .24em; }
-  .cart__line { grid-template-columns: 64px minmax(0, 1fr); gap: 12px; }
-  .cart__thumb { width: 64px; height: 64px; border-radius: 14px; }
+  .cart__line { gap: 12px; }
   .cart__line-name { font-size: .88rem; }
-  .cart__seg, .ck__seg { font-size: .74rem; }
+  .ck__seg { font-size: .74rem; }
   .ck__seg-btn { height: 36px; font-size: .71rem; }
   .cart__total-val { font-size: 1.18rem; }
   .cart__coupon { padding: 12px; }
@@ -1170,5 +1169,5 @@ textarea.ck__input { height: auto; min-height: 84px; line-height: 1.85; }
   .cart__panel.is-active { animation: none; }
   .cart__check.is-anim .cart__check-ring,
   .cart__check.is-anim .cart__check-mark { animation-duration: .001ms; animation-delay: 0s; }
-  .cart__spinner, .ck__spinner { animation-duration: 1.6s; }
+  .ck__spinner { animation-duration: 1.6s; }
 }

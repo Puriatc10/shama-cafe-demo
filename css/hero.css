@@ -277,6 +277,8 @@
   .hero__seal svg { width: 74px; height: 74px; }
 }
 @media (max-width: 560px) {
+  .hero__cta { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+  .hero__cta .btn { padding: 0 12px; font-size: .9rem; }
   .hero__stats { gap: 18px 28px; margin-top: 34px; }
   .hero__stats dd { font-size: 1.05rem; }
   .hero__card--a { width: 30%; }

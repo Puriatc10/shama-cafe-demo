@@ -16,7 +16,7 @@
   display: grid;
   grid-template-columns: minmax(0, 1.16fr) minmax(0, .92fr) minmax(0, .92fr);
   gap: clamp(24px, 3vw, 46px);
-  align-items: start;
+  align-items: stretch;
 }
 .visit__col {
   position: relative;
@@ -74,14 +74,14 @@
 }
 .visit__map-txt {
   font-family: var(--font-fa);
-  font-size: 10.5px;
-  fill: #A79A85;
+  font-size: 12px;
+  fill: #C6B69E;
   letter-spacing: .02em;
 }
 .visit__map-txt--road {
-  font-size: 9.5px;
-  fill: #8B7B62;
-  letter-spacing: .16em;
+  font-size: 10.5px;
+  fill: #9C8B72;
+  letter-spacing: .14em;
 }
 .visit__map-key {
   position: absolute;
@@ -235,6 +235,10 @@
 }
 
 /* --------------------------------------------------------- contact */
+.visit__col--contact {
+  display: flex;
+  flex-direction: column;
+}
 .visit__links {
   display: grid;
   gap: 6px;
@@ -282,6 +286,7 @@
 .visit__reserve {
   width: 100%;
   max-width: 260px;
+  margin-block-start: auto;
 }
 
 /* ═══════════════════════════════════════════════════ FOOTER */

@@ -43,13 +43,16 @@
     .replace(/[\u0623\u0625\u0622]/g, '\u0627') // أ إ آ → ا
     .replace(/[\u064B-\u0652\u200C\u200E\u200F\u200D]/g, '')
     .replace(/\u0640/g, '')
+    .replace(/[\u06F0-\u06F9]/g, (d) => String('\u06F0\u06F1\u06F2\u06F3\u06F4\u06F5\u06F6\u06F7\u06F8\u06F9'.indexOf(d)))
     .replace(/\s+/g, ' ')
     .trim();
 
   function matchItem(it, q) {
     if (!q) return true;
     const hay = norm(it.name + ' ' + it.desc);
-    return q.split(' ').every((token) => !token || hay.indexOf(token) !== -1);
+    if (q.split(' ').every((token) => !token || hay.indexOf(token) !== -1)) return true;
+    // also match with all spaces removed (handles «پیشغذا» vs «پیش غذا»)
+    return hay.replace(/ /g, '').indexOf(q.replace(/ /g, '')) !== -1;
   }
 
   function pickItems(cat) {
@@ -321,6 +324,7 @@
   }
 
   function clearQuery(focusInput) {
+    clearTimeout(debounceId);
     searchInput.value = '';
     searchClear.hidden = true;
     searchWrap.classList.remove('is-filled');
@@ -425,7 +429,7 @@
     if (it.options && it.options.length > 1) {
       optsWrap.hidden = false;
       $('[data-part="opts"]', modal).innerHTML = it.options.map((o, i) =>
-        '<button class="menu-modal__option" type="button" role="radio" aria-checked="' + (i === 0) + '" data-opt="' + i + '">' + esc(o) + '</button>'
+        '<button class="menu-modal__option" type="button" role="radio" aria-checked="' + (i === 0) + '" tabindex="' + (i === 0 ? 0 : -1) + '" data-opt="' + i + '">' + esc(o) + '</button>'
       ).join('');
     } else {
       optsWrap.hidden = true;
@@ -433,6 +437,8 @@
     }
 
     noteEl.value = '';
+    const mbody = $('.menu-modal__body', modal);
+    if (mbody) mbody.scrollTop = 0;
     paintQty();
 
     clearTimeout(closeTimer);
@@ -442,7 +448,7 @@
     dialog.focus({ preventScroll: true });
   }
 
-  function closeModal() {
+  function closeModal(skipFocus) {
     if (modal.hidden) return;
     modal.classList.remove('is-open');
     document.body.classList.remove('no-scroll');
@@ -450,7 +456,7 @@
     clearTimeout(closeTimer);
     closeTimer = setTimeout(() => {
       modal.hidden = true;
-      if (lastTrigger && document.contains(lastTrigger)) {
+      if (!skipFocus && lastTrigger && document.contains(lastTrigger)) {
         try { lastTrigger.focus({ preventScroll: true }); } catch (e) { /* ignore */ }
       }
     }, 340);
@@ -462,7 +468,9 @@
     if (!opts[idx]) return;
     cur.option = idx;
     $$('[data-opt]', modal).forEach((b) => {
-      b.setAttribute('aria-checked', String(Number(b.dataset.opt) === idx));
+      const on = Number(b.dataset.opt) === idx;
+      b.setAttribute('aria-checked', String(on));
+      b.tabIndex = on ? 0 : -1;
     });
   }
 
@@ -489,7 +497,9 @@
     const note = noteEl.value.trim();
     const qty = cur.qty;
     const from = lastTrigger;
-    closeModal();
+    const desktop = window.matchMedia('(min-width: 900px) and (pointer: fine)').matches;
+    const willOpenCart = desktop && !!window.Shama.cartUI;
+    closeModal(willOpenCart);
     addToCart(it, qty, note, variant, from);
   }
 
@@ -579,6 +589,15 @@
     const btn = e.target.closest('.menu__tab');
     if (!btn) return;
     const id = btn.dataset.cat;
+    if (STATE.q || searchInput.value.trim()) {
+      clearTimeout(debounceId);
+      searchInput.value = '';
+      searchClear.hidden = true;
+      searchWrap.classList.remove('is-filled');
+      STATE.q = '';
+      STATE.raw = '';
+      renderGrids(false);
+    }
     setActive(id, true);
     STATE.lockUntil = Date.now() + 900;
     if (id === 'all') scrollToEl(bodyEl);
@@ -624,6 +643,19 @@
       return;
     }
     if (e.target.closest('[data-add-current]')) addCurrent();
+  });
+
+  $('[data-part="opts"]', modal).addEventListener('keydown', (e) => {
+    if (!cur || !cur.item.options || cur.item.options.length < 2) return;
+    const dir = (e.key === 'ArrowLeft' || e.key === 'ArrowDown') ? 1
+      : (e.key === 'ArrowRight' || e.key === 'ArrowUp') ? -1 : 0;
+    if (!dir) return;
+    e.preventDefault();
+    const total = cur.item.options.length;
+    const next = (cur.option + dir + total) % total;
+    selectOption(next);
+    const btn = modal.querySelector('[data-opt="' + next + '"]');
+    if (btn) btn.focus();
   });
 
   document.addEventListener('keydown', (e) => {

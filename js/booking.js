@@ -817,6 +817,7 @@
           <p class="club__hint" id="club-wallet-note">—</p>
 
           <div class="club__topups" id="club-topups" role="group" aria-label="شارژ کیف پول">
+            <span class="club__topup-lbl">شارژ سریع</span>
             <button type="button" class="club__topup" data-amount="100000" aria-label="شارژ ۱۰۰ هزار تومان">+۱۰۰ هزار</button>
             <button type="button" class="club__topup" data-amount="200000" aria-label="شارژ ۲۰۰ هزار تومان">+۲۰۰ هزار</button>
             <button type="button" class="club__topup" data-amount="500000" aria-label="شارژ ۵۰۰ هزار تومان">+۵۰۰ هزار</button>

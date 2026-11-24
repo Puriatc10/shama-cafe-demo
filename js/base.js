@@ -43,6 +43,7 @@
     const n = window.Shama.basket.count();
     el.textContent = window.Shama.util.fa(n);
     el.dataset.empty = n === 0 ? 'true' : 'false';
+    document.body.classList.toggle('has-cartbar', n > 0 && innerWidth < 720);
     const btn = $('#nav-cart');
     if (btn) {
       btn.classList.toggle('has-items', n > 0);
@@ -71,7 +72,12 @@
   }, { rootMargin: '0px 0px -8% 0px', threshold: 0.06 });
 
   function observeReveals(scope) {
-    $$('.reveal:not(.in)', scope || document).forEach((el) => io.observe(el));
+    const limit = innerHeight * 0.94;
+    $$('.reveal:not(.in)', scope || document).forEach((el) => {
+      const r = el.getBoundingClientRect();
+      if (r.top < limit) el.classList.add('in');
+      else io.observe(el);
+    });
   }
   observeReveals();
   window.Shama.observeReveals = observeReveals;

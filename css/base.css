@@ -424,3 +424,7 @@ main img {
 }
 main .no-grade img,
 main img.no-grade { filter: none; }
+
+/* the mobile cart bar floats above the page — keep content clear of it */
+body.has-cartbar { padding-bottom: 92px; }
+@media (min-width: 720px) { body.has-cartbar { padding-bottom: 0; } }

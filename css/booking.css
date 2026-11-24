@@ -842,7 +842,7 @@
 
 .club__idx {
   position: absolute;
-  top: 12px;
+  top: 10px;
   inset-inline-end: 18px;
   z-index: 0;
   font-family: var(--font-display);
@@ -854,7 +854,7 @@
   font-variant-numeric: tabular-nums;
   pointer-events: none;
 }
-.club__panel > * { position: relative; z-index: 1; }
+.club__panel > *:not(.club__idx) { position: relative; z-index: 1; }
 
 .club__head {
   display: flex;
@@ -962,6 +962,13 @@
   gap: 7px;
   margin-top: auto;
   padding-top: 6px;
+}
+.club__topup-lbl {
+  flex: 1 0 100%;
+  font-size: .62rem;
+  letter-spacing: .06em;
+  color: var(--cream-4);
+  margin-bottom: -1px;
 }
 .club__topup {
   height: 36px;
@@ -1219,6 +1226,8 @@
 @media (max-width: 430px) {
   .rs__card { padding: 16px 13px; border-radius: 20px; }
   .rs__block { padding-block: 14px; }
+  .rs__quiet { border-radius: 14px; padding: 11px 14px; gap: 4px 8px; }
+  .rs__quiet-lbl { width: 100%; }
   .rs__date { width: 66px; height: 84px; border-radius: 13px; }
   .rs__date-day { font-size: 1.3rem; }
   .rs__slots { grid-template-columns: repeat(auto-fill, minmax(66px, 1fr)); gap: 5px; }

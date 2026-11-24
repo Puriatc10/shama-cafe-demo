@@ -494,6 +494,7 @@
         li.dataset.qty = String(line.qty);
         li.style.setProperty('--i', String(i));
         li.innerHTML = rowHTML(line);
+        if (linesEl.children[i] !== li) linesEl.insertBefore(li, linesEl.children[i] || null);
         var img = li.querySelector('img');
         if (img) {
           img.addEventListener('error', function () {
@@ -501,7 +502,6 @@
             if (th) th.classList.add('is-broken');
           }, { once: true });
         }
-        linesEl.appendChild(li);
         return;
       }
       var qn = li.querySelector('[data-qty]');
@@ -516,7 +516,7 @@
       }
       var tot = li.querySelector('[data-total]');
       if (tot) tot.innerHTML = m(line.price * line.qty);
-      linesEl.appendChild(li);
+      if (linesEl.children[i] !== li) linesEl.insertBefore(li, linesEl.children[i] || null);
     });
 
     $$('.cart__line', linesEl).forEach(function (li) {
