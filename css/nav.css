@@ -178,6 +178,8 @@
   position: fixed;
   inset: 0;
   top: var(--nav-h);
+  overflow-y: auto;
+  overscroll-behavior: contain;
   z-index: 690;
   display: grid;
   align-content: start;
