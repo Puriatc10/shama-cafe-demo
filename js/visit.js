@@ -53,49 +53,13 @@
     '          مسیریابی',
     '        </a>',
 
-    '        <div class="visit__map" role="img" aria-label="نقشه‌ی شماتیک شاما؛ جنب پارک بسیج و مترو بسیج، روی بزرگراه محلاتی">',
-    '          <svg viewBox="0 0 480 300" preserveAspectRatio="xMidYMid slice" aria-hidden="true" focusable="false">',
-    '            <defs>',
-    '              <linearGradient id="vm-gold" x1="60" y1="240" x2="420" y2="40" gradientUnits="userSpaceOnUse">',
-    '                <stop stop-color="#8A6329"/><stop offset=".5" stop-color="#C9A227"/><stop offset="1" stop-color="#E7C873"/>',
-    '              </linearGradient>',
-    '              <pattern id="vm-grid" width="40" height="40" patternUnits="userSpaceOnUse">',
-    '                <path d="M40 0H0V40" fill="none" stroke="#C9A227" stroke-opacity=".11" stroke-width="1"/>',
-    '              </pattern>',
-    '              <radialGradient id="vm-glow" cx="50%" cy="47%" r="52%">',
-    '                <stop stop-color="#C9A227" stop-opacity=".18"/><stop offset="1" stop-color="#C9A227" stop-opacity="0"/>',
-    '              </radialGradient>',
-    '            </defs>',
-    '            <rect width="480" height="300" fill="#0D0A07"/>',
-    '            <rect width="480" height="300" fill="url(#vm-grid)"/>',
-    '            <rect width="480" height="300" fill="url(#vm-glow)"/>',
-
-    /* park block */
-    '            <rect x="322" y="188" width="128" height="86" rx="10" fill="#C9A227" fill-opacity=".07" stroke="#C9A227" stroke-opacity=".22"/>',
-    '            <text x="386" y="237" text-anchor="middle" class="visit__map-txt">پارک بسیج</text>',
-
-    /* minor streets */
-    '            <path d="M0 96H480M0 152H480M0 214H480M96 0V300M254 0V300M386 0V300" stroke="#C9A227" stroke-opacity=".16" stroke-width="1"/>',
-    /* main avenue (بزرگراه محلاتی) */
-    '            <path d="M-10 268 490 52" stroke="url(#vm-gold)" stroke-opacity=".55" stroke-width="6" stroke-linecap="round"/>',
-    '            <path d="M-10 268 490 52" stroke="#0D0A07" stroke-opacity=".55" stroke-width="1.4" stroke-dasharray="14 12"/>',
-    /* metro */
-    '            <g>',
-    '              <circle cx="254" cy="214" r="6.5" fill="#0D0A07" stroke="#DCCFBB" stroke-opacity=".55"/>',
-    '              <circle cx="254" cy="214" r="2.4" fill="#DCCFBB" fill-opacity=".7"/>',
-    '              <text x="254" y="240" text-anchor="middle" class="visit__map-txt">مترو بسیج</text>',
-    '            </g>',
-    '            <text x="92" y="76" text-anchor="middle" class="visit__map-txt visit__map-txt--road">بزرگراه محلاتی</text>',
-
-    /* pin */
-    '            <g transform="translate(240 166)">',
-    '              <circle class="visit__ping" cy="-21.4" r="15" fill="none" stroke="#C9A227" stroke-width="1.2"/>',
-    '              <circle class="visit__ping visit__ping--2" cy="-21.4" r="15" fill="none" stroke="#C9A227" stroke-width="1.2"/>',
-    '              <path d="M0 0C-2.6-3.2-15-14.6-15-21.4a15 15 0 1 1 30 0C15-14.6 2.6-3.2 0 0Z" fill="url(#vm-gold)"/>',
-    '              <circle cx="0" cy="-21.4" r="5.2" fill="#0A0806"/>',
-    '            </g>',
-    '          </svg>',
+    '        <div class="visit__map visit__map--real">',
+    '          <iframe class="visit__map-frame" title="نقشه شاما — بزرگراه محلاتی، جنب مترو بسیج" ',
+    '            src="https://www.openstreetmap.org/export/embed.html?bbox=51.4848%2C35.6650%2C51.4948%2C35.6701&amp;layer=mapnik&amp;marker=35.667442%2C51.489830" ',
+    '            loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>',
     '          <span class="visit__map-key"><span class="visit__map-key-dot" aria-hidden="true"></span>شاما</span>',
+    '          <a class="visit__map-link" href="https://www.openstreetmap.org/?mlat=35.667442&amp;mlon=51.489830#map=16/35.6674/51.4898" ',
+    '             target="_blank" rel="noopener">نقشه بزرگ‌تر</a>',
     '        </div>',
     '      </div>',
 

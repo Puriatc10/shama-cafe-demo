@@ -34,7 +34,7 @@
   border: 1px solid rgba(201, 162, 39, .10);
 }
 .hero__ring--1 { width: 74vmin; height: 74vmin; }
-.hero__ring--2 { width: 102vmin; height: 102vmin; border-style: dashed; border-color: rgba(201, 162, 39, .07); animation: spin 90s linear infinite; }
+.hero__ring--2 { width: 102vmin; height: 102vmin; border-style: dashed; border-color: rgba(201, 162, 39, .07); }
 .hero__ring--3 { width: 132vmin; height: 132vmin; border-color: rgba(201, 162, 39, .05); }
 @keyframes spin { to { transform: rotate(360deg); } }
 

@@ -29,6 +29,15 @@
 <div id="cursor-halo" aria-hidden="true"></div>
 <div id="scroll-progress" aria-hidden="true"></div>
 
+<!-- faint 3D cup, living behind the page -->
+<div class="cup-art" id="cup-art" aria-hidden="true">
+  <img src="assets/img/site/latte-art.webp" alt="" width="1100" height="1100" fetchpriority="low" decoding="async">
+  <svg class="cup-art__ring" viewBox="0 0 100 100" aria-hidden="true">
+    <circle class="cup-art__track" cx="50" cy="50" r="48"/>
+    <circle class="cup-art__bar" cx="50" cy="50" r="48"/>
+  </svg>
+</div>
+
 <!-- ═══════════════════════════════════════════════ NAV -->
 <header class="nav" id="nav">
   <div class="nav__inner shell">
@@ -144,45 +153,10 @@
       </div>
     </div>
 
-    <a class="hero__scroll" href="#pour" aria-label="اسکرول کنید">
+    <a class="hero__scroll" href="#story" aria-label="اسکرول کنید">
       <span class="hero__scroll-line"></span>
       <span class="tiny">اسکرول کنید</span>
     </a>
-  </section>
-
-  <!-- ═══════════════════════════════════════════════ POUR (scroll-driven cup) -->
-  <section class="pour" id="pour" aria-label="فنجان شاما">
-    <div class="pour__sticky">
-      <div class="pour__inner shell">
-        <div class="pour__copy">
-          <div class="pour__step is-active" data-step="0">
-            <p class="eyebrow">۰۱ — انتخاب دانه</p>
-            <h2 class="pour__title">از دانه‌ی تازه‌رست<br><span class="gold-text">شروع می‌شود</span></h2>
-            <p class="pour__text">هر هفته رست تازه؛ عربیکای برزیل با بدنه‌ی شکلاتی و اسیدیتی ملایم.</p>
-          </div>
-          <div class="pour__step" data-step="1">
-            <p class="eyebrow">۰۲ — استخراج</p>
-            <h2 class="pour__title">۲۵ ثانیه<br><span class="gold-text">دقت</span></h2>
-            <p class="pour__text">اسپرسوی دوبل با فشار ۹ بار؛ کرمای غلیظ به رنگ عسل تیره.</p>
-          </div>
-          <div class="pour__step" data-step="2">
-            <p class="eyebrow">۰۳ — لته‌آرت</p>
-            <h2 class="pour__title">و آن‌گاه<br><span class="gold-text">هنر روی فنجان</span></h2>
-            <p class="pour__text">شیر بخار‌داده با کاکائو، طرحی دست‌ساز روی سطح قهوه می‌سازد.</p>
-          </div>
-        </div>
-
-        <div class="pour__stage" id="cup-stage">
-          <!-- cup SVG injected by js/cup.js -->
-        </div>
-
-        <div class="pour__meter" aria-hidden="true">
-          <span class="pour__meter-fill"></span>
-          <span class="pour__meter-label tiny num"><span id="cup-pct">۰</span>٪</span>
-        </div>
-      </div>
-      <div class="pour__shadow" aria-hidden="true"></div>
-    </div>
   </section>
 
   <!-- ═══════════════════════════════════════════════ STORY (agent D) -->
@@ -208,7 +182,7 @@
 <script src="js/data.js"></script>
 <script src="js/store.js"></script>
 <script src="js/base.js"></script>
-<script src="js/cup.js"></script>
+<script src="js/cup-bg.js"></script>
 <script src="js/story.js"></script>
 <script src="js/menu.js"></script>
 <script src="js/cart.js"></script>

@@ -1,198 +1,74 @@
 /* ============================================================
-   SHAMA — the pouring cup (scroll-driven)
+   SHAMA — the cup, as a faint piece of art behind the page
+   (one masked photograph + a hairline progress ring)
    ============================================================ */
 
-.pour {
-  position: relative;
-  height: 320vh;
-  background:
-    radial-gradient(52% 42% at 50% 46%, rgba(201, 162, 39, .07), transparent 70%),
-    linear-gradient(180deg, var(--ink-1), #080605 55%, var(--ink-1));
-}
-
-.pour__sticky {
-  position: sticky;
-  top: 0;
-  height: 100svh;
-  display: grid;
-  align-items: center;
-  overflow: hidden;
-}
-
-/* soft floor light under the cup ------------------------------------ */
-.pour__shadow {
-  position: absolute;
-  inset-inline: 0;
-  bottom: 0;
-  height: 38%;
+.cup-art {
+  position: fixed;
+  z-index: 1;
   pointer-events: none;
-  background: radial-gradient(46% 100% at 50% 100%, rgba(201, 162, 39, calc(.05 + var(--p, 0) * .12)), transparent 72%);
-}
-
-.pour__inner {
-  position: relative;
-  display: grid;
-  grid-template-columns: minmax(0, .92fr) minmax(0, 1.1fr) 76px;
-  align-items: center;
-  gap: clamp(16px, 3vw, 46px);
-  width: 100%;
-  z-index: 2;
-}
-
-/* --------------------------------------------------------------- copy */
-.pour__copy {
-  position: relative;
-  min-height: 260px;
-  display: grid;
-  align-content: center;
-}
-.pour__step {
-  grid-area: 1 / 1;
-  opacity: 0;
-  transform: translateY(22px);
-  transition: opacity .7s var(--ease), transform .7s var(--ease);
-  pointer-events: none;
-}
-.pour__step.is-active { opacity: 1; transform: none; }
-.pour__step .eyebrow { margin-bottom: 14px; }
-.pour__title {
-  font-size: clamp(1.8rem, 3.4vw, 2.9rem);
-  line-height: 1.2;
-  font-weight: 800;
-  letter-spacing: -.02em;
-}
-.pour__text {
-  margin-top: 18px;
-  color: var(--cream-2);
-  font-weight: 300;
-  line-height: 2;
-  font-size: clamp(.9rem, 1.1vw, 1rem);
-  max-width: 38ch;
-}
-
-/* -------------------------------------------------------------- stage */
-.pour__stage {
-  position: relative;
-  display: grid;
-  place-items: center;
-  height: min(72vh, 620px);
+  width: min(46vw, 640px);
+  aspect-ratio: 1 / 1;
+  inset-inline-start: -7vw;
+  bottom: -12vh;
+  opacity: calc(.55 * var(--cup-o, 1));
+  filter: saturate(.82) contrast(1.05) brightness(.86);
+  transform: translate3d(0, var(--cup-y, 0px), 0) scale(var(--cup-s, 1));
   will-change: transform;
+  animation: cup-rise 1.8s var(--ease) both .2s;
 }
-.pour__stage svg {
-  width: min(100%, 560px);
+.cup-art img {
+  width: 100%;
   height: 100%;
+  object-fit: contain;
+  filter: none;
+}
+@keyframes cup-rise {
+  from { opacity: 0; transform: translate3d(0, 30px, 0) scale(.96); }
+}
+
+/* hairline ring that fills with the page */
+.cup-art__ring {
+  position: absolute;
+  inset: 2%;
+  width: 96%;
+  height: 96%;
+  transform: rotate(-90deg);
   overflow: visible;
-  filter: drop-shadow(0 40px 60px rgba(0, 0, 0, .6));
-  transition: transform .3s linear;
+}
+.cup-art__track,
+.cup-art__bar {
+  fill: none;
+  stroke-width: .45;
+}
+.cup-art__track { stroke: rgba(201, 162, 39, .10); }
+.cup-art__bar {
+  stroke: rgba(201, 162, 39, .55);
+  stroke-linecap: round;
+  stroke-dasharray: 301.6;
+  stroke-dashoffset: calc(301.6 - var(--p, 0) * 301.6);
 }
 
-/* halo ring behind the cup ------------------------------------------ */
-.pour__stage::before {
+/* a soft warm pool under the cup so it sits in the scene */
+.cup-art::after {
   content: "";
   position: absolute;
-  width: min(84%, 470px);
-  aspect-ratio: 1;
+  inset: 14% 6% -6% 6%;
   border-radius: 50%;
-  border: 1px solid rgba(201, 162, 39, .12);
-  background: radial-gradient(circle, rgba(201, 162, 39, calc(.03 + var(--p, 0) * .10)), transparent 68%);
-  transform: scale(calc(.94 + var(--p, 0) * .08));
-  transition: transform .2s linear;
+  background: radial-gradient(closest-side, rgba(201, 162, 39, .10), transparent 72%);
+  z-index: -1;
 }
-.pour__stage::after {
-  content: "";
-  position: absolute;
-  width: min(66%, 370px);
-  aspect-ratio: 1;
-  border-radius: 50%;
-  border: 1px dashed rgba(201, 162, 39, .08);
-  animation: spin 60s linear infinite;
-}
-
-/* -------------------------------------------------------------- meter */
-.pour__meter {
-  position: relative;
-  align-self: stretch;
-  display: grid;
-  justify-items: center;
-  align-content: center;
-  gap: 14px;
-}
-.pour__meter::before {
-  content: "";
-  position: absolute;
-  top: 12%;
-  bottom: 12%;
-  width: 1px;
-  background: linear-gradient(180deg, transparent, rgba(201, 162, 39, .22), transparent);
-}
-.pour__meter-fill {
-  position: absolute;
-  top: 12%;
-  width: 3px;
-  border-radius: 99px;
-  height: calc(var(--p, 0) * 76%);
-  background: linear-gradient(180deg, var(--gold-5), var(--gold-3) 40%, var(--gold-1));
-  box-shadow: 0 0 16px rgba(201, 162, 39, .6);
-  transition: height .15s linear;
-}
-.pour__meter-label {
-  position: absolute;
-  bottom: 4%;
-  color: var(--gold-4);
-  font-weight: 600;
-  letter-spacing: .04em;
-}
-
-/* svg bits ---------------------------------------------------------- */
-.cup-gloss { mix-blend-mode: screen; }
-.cup-steam path {
-  stroke-dasharray: 30 120;
-  animation: steam 5.5s linear infinite;
-  opacity: 0;
-}
-.cup-steam path:nth-child(2) { animation-delay: 1.6s; }
-.cup-steam path:nth-child(3) { animation-delay: 3.1s; }
-@keyframes steam {
-  0% { stroke-dashoffset: 150; opacity: 0; }
-  22% { opacity: .5; }
-  70% { opacity: .28; }
-  100% { stroke-dashoffset: -30; opacity: 0; }
-}
-
-.cup-art { transform-box: fill-box; transform-origin: center; }
-.cup-ripple { transform-box: fill-box; transform-origin: center; }
 
 @media (max-width: 980px) {
-  .pour { height: 240vh; }
-  .pour__inner {
-    grid-template-columns: 1fr;
-    grid-template-rows: auto auto;
-    justify-items: center;
-    gap: 8px;
-    padding-block: calc(var(--nav-h) + 10px) 40px;
+  .cup-art {
+    width: min(78vw, 460px);
+    inset-inline-start: auto;
+    inset-inline-end: -18vw;
+    bottom: -6vh;
+    opacity: calc(.30 * var(--cup-o, 1));
   }
-  .pour__stage { order: -1; height: min(50vh, 460px); }
-  .pour__copy { min-height: 150px; text-align: center; justify-items: center; }
-  .pour__step .eyebrow { justify-content: center; }
-  .pour__step .eyebrow::before { display: none; }
-  .pour__text { margin-inline: auto; }
-  .pour__meter {
-    position: absolute;
-    inset-inline: 0;
-    bottom: 12px;
-    height: 1px;
-    display: block;
-  }
-  .pour__meter::before {
-    top: 0; bottom: auto; inset-inline: 20%; width: auto; height: 1px;
-    background: linear-gradient(90deg, transparent, rgba(201, 162, 39, .3), transparent);
-  }
-  .pour__meter-fill {
-    top: -1px;
-    inset-inline-start: 50%;
-    width: calc(var(--p, 0) * 56%);
-    height: 2px;
-    transform: translateX(50%);
-  }
-  .pour__meter-label { bottom: 14px; inset-inline-start: 0; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cup-art { animation: none; }
 }

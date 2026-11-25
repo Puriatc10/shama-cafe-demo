@@ -47,8 +47,7 @@ body::after {
   inset: -10%;
   z-index: 1;
   pointer-events: none;
-  opacity: .05;
-  mix-blend-mode: overlay;
+  opacity: .045;
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='180' height='180' filter='url(%23n)'/%3E%3C/svg%3E");
 }
 
@@ -420,8 +419,8 @@ p { text-wrap: pretty; }
    studio-white, others are dark scenes. One warm grade keeps the
    page coherent and stops white backgrounds from glowing. */
 main img {
-  /* most photos are cut-outs with alpha, so the shadow follows the food */
-  filter: sepia(.06) brightness(.98) contrast(1.03) saturate(1.02) drop-shadow(0 16px 20px rgba(0, 0, 0, .45));
+  /* grade only: a per-image drop-shadow costs a blur layer per photo */
+  filter: sepia(.06) brightness(.98) contrast(1.03) saturate(1.02);
 }
 main .no-grade img,
 main img.no-grade { filter: none; }

@@ -113,14 +113,20 @@
   const halo = $('#cursor-halo');
   if (halo && window.matchMedia('(hover: hover) and (pointer: fine)').matches && !reduce) {
     document.body.classList.add('has-halo');
-    let tx = innerWidth / 2, ty = innerHeight / 2, cx = tx, cy = ty;
-    window.addEventListener('pointermove', (e) => { tx = e.clientX; ty = e.clientY; }, { passive: true });
-    (function loop() {
-      cx += (tx - cx) * 0.075;
-      cy += (ty - cy) * 0.075;
-      halo.style.transform = 'translate3d(' + cx + 'px,' + cy + 'px,0)';
-      requestAnimationFrame(loop);
-    })();
+    let tx = innerWidth / 2, ty = innerHeight / 2, cx = tx, cy = ty, raf = 0, idle = 0;
+    const step = () => {
+      cx += (tx - cx) * 0.09;
+      cy += (ty - cy) * 0.09;
+      halo.style.transform = 'translate3d(' + cx.toFixed(1) + 'px,' + cy.toFixed(1) + 'px,0)';
+      if (Math.abs(tx - cx) > 0.4 || Math.abs(ty - cy) > 0.4) raf = requestAnimationFrame(step);
+      else { raf = 0; }
+    };
+    window.addEventListener('pointermove', (e) => {
+      tx = e.clientX; ty = e.clientY;
+      if (!raf) raf = requestAnimationFrame(step);   /* only animate while the pointer moves */
+      clearTimeout(idle);
+      idle = setTimeout(() => { if (!raf) halo.style.opacity = ''; }, 600);
+    }, { passive: true });
   } else if (halo) {
     halo.remove();
   }
@@ -129,21 +135,28 @@
   const cards = $$('.hero__card');
   const hero = $('#hero');
   if (cards.length && hero && !reduce) {
-    let mx = 0, my = 0, px = 0, py = 0;
+    let mx = 0, my = 0, px = 0, py = 0, raf = 0, live = true;
+    const step = () => {
+      px += (mx - px) * 0.08;
+      py += (my - py) * 0.08;
+      cards.forEach((c) => {
+        const d = +(c.dataset.depth || 20);
+        c.style.transform = 'translate3d(' + (-px * d).toFixed(1) + 'px,' + (-py * d).toFixed(1) + 'px,0)';
+      });
+      raf = live && (Math.abs(mx - px) > 0.002 || Math.abs(my - py) > 0.002)
+        ? requestAnimationFrame(step) : 0;
+    };
     hero.addEventListener('pointermove', (e) => {
       const r = hero.getBoundingClientRect();
       mx = (e.clientX - r.left) / r.width - 0.5;
       my = (e.clientY - r.top) / r.height - 0.5;
-    });
-    (function loop() {
-      px += (mx - px) * 0.06;
-      py += (my - py) * 0.06;
-      cards.forEach((c) => {
-        const d = +(c.dataset.depth || 20);
-        c.style.transform = 'translate3d(' + (-px * d) + 'px,' + (-py * d) + 'px,0)';
-      });
-      requestAnimationFrame(loop);
-    })();
+      if (!raf) raf = requestAnimationFrame(step);
+    }, { passive: true });
+    /* no point animating once the hero is off screen */
+    new IntersectionObserver((es) => {
+      live = es[0].isIntersecting;
+      if (live && !raf) raf = requestAnimationFrame(step);
+    }, { threshold: 0 }).observe(hero);
   }
 
   /* -------------------------------------------------- smooth anchor jump */

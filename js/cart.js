@@ -87,7 +87,6 @@
     '    <header class="cart__head">',
     '      <div class="cart__head-row">',
     '        <button class="cart__icon-btn cart__back" id="cartBack" type="button" aria-label="بازگشت به سبد" hidden>' + ICON.back + '</button>',
-    '        <p class="cart__step latin" id="cartStep">ORDER / 01</p>',
     '        <button class="cart__icon-btn cart__close" id="cartClose" type="button" aria-label="بستن سبد">' + ICON.close + '</button>',
     '      </div>',
     '      <div class="cart__head-title">',
@@ -358,7 +357,6 @@
   /* ----------------------------------------------------------------- refs */
   var root = $('#shamaCart', mount);
   var drawer = $('#cartDrawer', mount);
-  var stepEl = $('#cartStep', mount);
   var titleEl = $('#cartTitle', mount);
   var subEl = $('#cartSub', mount);
   var badge = $('#cartBadge', mount);
@@ -446,9 +444,9 @@
 
   var SLOT_LABEL = { asap: 'در اسرع وقت', '30': '۳۰ دقیقه دیگر', '60': '۱ ساعت دیگر', custom: 'زمان دلخواه' };
   var VIEW_META = {
-    list: { step: 'ORDER / 01', title: 'سبد شما', sub: 'یک سفارش کوچک، یک شب طلایی.' },
-    checkout: { step: 'ORDER / 02', title: 'تکمیل سفارش', sub: 'جزئیات تحویل و پرداخت را کامل کنید.' },
-    done: { step: 'ORDER / 03', title: 'سفارش ثبت شد', sub: 'رسید و پیگیری سفارش شما.' }
+    list: { title: 'سبد شما', sub: 'یک سفارش کوچک، یک شب طلایی.' },
+    checkout: { title: 'تکمیل سفارش', sub: 'جزئیات تحویل و پرداخت را کامل کنید.' },
+    done: { title: 'سفارش ثبت شد', sub: 'رسید و پیگیری سفارش شما.' }
   };
 
   /* ---------------------------------------------------------------- rows */
@@ -682,7 +680,6 @@
     if (!VIEW_META[v]) return;
     view = v;
     var meta = VIEW_META[v];
-    stepEl.textContent = meta.step;
     titleEl.textContent = meta.title;
     subEl.textContent = meta.sub;
     panels.forEach(function (p) {
