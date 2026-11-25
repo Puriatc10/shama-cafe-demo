@@ -1123,3 +1123,16 @@
   .menu__card:hover,
   .menu__sig-card:hover { transform: none; }
 }
+
+/* ---------------------------------------------------- photo + fallback
+   The monogram is always rendered under the photo; the image sits above
+   it and simply covers it once it has downloaded. */
+.menu__card-media > img,
+.menu__sig-media > img {
+  position: relative;
+  z-index: 1;
+}
+.menu__card-media > .menu__noimg,
+.menu__sig-media > .menu__noimg {
+  z-index: 0;
+}
