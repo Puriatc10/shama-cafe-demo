@@ -75,11 +75,18 @@
       '</span>';
   }
 
+  /* the first cards are fetched immediately; the rest wait for the scroll.
+     On a slow connection that means the top of the menu appears at once. */
+  let eagerLeft = 9;
+
   function cardMedia(it) {
     /* the monogram always sits underneath, so a card never looks empty —
        not while the photo downloads, and not if it never arrives */
+    const eager = eagerLeft > 0;
+    if (eager) eagerLeft--;
     const img = it.img
-      ? noImg(it.name) + '<img src="' + esc(it.img) + '" alt="" width="720" height="540" loading="lazy" decoding="async">'
+      ? noImg(it.name) + '<img src="' + esc(it.img) + '" alt="" width="720" height="540" ' +
+        (eager ? 'fetchpriority="high"' : 'loading="lazy"') + ' decoding="async">'
       : noImg(it.name);
     const badge = it.rate >= 4.5 ? '<span class="menu__card-badge">پرفروش</span>' : '';
     return '<span class="menu__card-media card-media">' + img +
