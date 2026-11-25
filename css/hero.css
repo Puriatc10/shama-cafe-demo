@@ -230,40 +230,7 @@
   fill: var(--gold-4);
 }
 
-/* scroll cue --------------------------------------------------------- */
-.hero__scroll {
-  position: absolute;
-  bottom: 26px;
-  left: 50%;
-  transform: translateX(-50%);
-  display: grid;
-  justify-items: center;
-  gap: 8px;
-  color: var(--cream-3);
-  z-index: 4;
-}
-.hero__scroll-line {
-  width: 1px;
-  height: 46px;
-  background: linear-gradient(180deg, transparent, var(--gold-3));
-  position: relative;
-  overflow: hidden;
-}
-.hero__scroll-line::after {
-  content: "";
-  position: absolute;
-  inset-inline: 0;
-  top: -50%;
-  height: 50%;
-  background: var(--gold-5);
-  animation: drip 2.4s var(--ease-in-out) infinite;
-}
-@keyframes drip {
-  0% { top: -50%; opacity: 0; }
-  30% { opacity: 1; }
-  100% { top: 100%; opacity: 0; }
-}
-.hero__scroll:hover { color: var(--gold-4); }
+/* (scroll cue removed) */
 
 /* responsive --------------------------------------------------------- */
 @media (max-width: 980px) {
@@ -271,7 +238,6 @@
   .hero__stage { grid-template-columns: 1fr; gap: 34px; }
   .hero__art { order: -1; aspect-ratio: 1.15 / 1; min-height: 300px; width: min(100%, 460px); margin-inline: auto; }
   .hero__title { font-size: clamp(2.6rem, 9vw, 4rem); }
-  .hero__scroll { display: none; }
   .hero__seal { width: 74px; height: 74px; inset-inline-start: 6%; }
   .hero__seal::before { inset: 0; }
   .hero__seal svg { width: 74px; height: 74px; }
