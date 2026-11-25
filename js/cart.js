@@ -226,22 +226,6 @@
     '              <textarea class="textarea ck__input" id="ckAddress" rows="3" placeholder="خیابان، کوچه، پلاک، واحد…"></textarea>',
     '              <span class="ck__err" hidden></span>',
     '            </div>',
-    '            <div class="ck__grid">',
-    '              <div class="field">',
-    '                <label for="ckSlot">زمان</label>',
-    '                <select class="select ck__input" id="ckSlot">',
-    '                  <option value="asap">در اسرع وقت</option>',
-    '                  <option value="30">۳۰ دقیقه دیگر</option>',
-    '                  <option value="60">۱ ساعت دیگر</option>',
-    '                  <option value="custom">زمان دلخواه…</option>',
-    '                </select>',
-    '              </div>',
-    '              <div class="field" id="ckSlotCustomField" hidden>',
-    '                <label for="ckSlotCustom">زمان دلخواه</label>',
-    '                <input class="input ck__input num" id="ckSlotCustom" type="text" placeholder="مثلاً ۲۱:۳۰">',
-    '                <span class="ck__err" hidden></span>',
-    '              </div>',
-    '            </div>',
     '            <div class="field">',
     '              <label for="ckNote">یادداشت برای آشپزخانه <span class="ck__opt">اختیاری</span></label>',
     '              <textarea class="textarea ck__input" id="ckNote" rows="2" placeholder="بدون پیاز، سس جدا، لته بدون شکر…"></textarea>',
@@ -406,9 +390,6 @@
   var pickupHint = $('#ckPickupHint', drawer);
   var nameEl = $('#ckName', drawer);
   var phoneEl = $('#ckPhone', drawer);
-  var slotEl = $('#ckSlot', drawer);
-  var slotCustomField = $('#ckSlotCustomField', drawer);
-  var slotCustomEl = $('#ckSlotCustom', drawer);
   var noteEl = $('#ckNote', drawer);
   var payRadios = $$('input[name="shamaPay"]', drawer);
   var payCards = $$('.ck__pay-card', drawer);
@@ -442,7 +423,6 @@
   var lastOrder = null;
   var couponMsgState = { type: '', text: '' };
 
-  var SLOT_LABEL = { asap: 'در اسرع وقت', '30': '۳۰ دقیقه دیگر', '60': '۱ ساعت دیگر', custom: 'زمان دلخواه' };
   var VIEW_META = {
     list: { title: 'سبد شما', sub: 'یک سفارش کوچک، یک شب طلایی.' },
     checkout: { title: 'تکمیل سفارش', sub: 'جزئیات تحویل و پرداخت را کامل کنید.' },
@@ -842,7 +822,6 @@
     if (!/^09\d{9}$/.test(phoneEn)) { markField(phoneEl, 'شماره موبایل باید ۱۱ رقم و با ۰۹ شروع شود.'); bad = bad || phoneEl; }
     if (st.mode === 'delivery' && addr.length < 8) { markField(addressEl, 'آدرس دقیق تحویل را وارد کنید.'); bad = bad || addressEl; }
     if (st.mode === 'table' && !table) { markField(tableEl, 'شماره میز را انتخاب کنید.'); bad = bad || tableEl; }
-    if (slotEl.value === 'custom' && !slotCustomEl.value.trim()) { markField(slotCustomEl, 'زمان دلخواه را وارد کنید.'); bad = bad || slotCustomEl; }
 
     if (bad) {
       bad.focus();
@@ -855,7 +834,7 @@
       return;
     }
 
-    var slot = slotEl.value === 'custom' ? slotCustomEl.value.trim() : (SLOT_LABEL[slotEl.value] || 'در اسرع وقت');
+    var slot = 'در اسرع وقت';
     var payload = {
       name: name,
       phone: phoneEn,
@@ -942,11 +921,6 @@
 
   tableEl.addEventListener('change', function () { B.setTable(tableEl.value); });
 
-  slotEl.addEventListener('change', function () {
-    var custom = slotEl.value === 'custom';
-    slotCustomField.hidden = !custom;
-    if (custom) slotCustomEl.focus();
-  });
 
   payRadios.forEach(function (r) {
     r.addEventListener('change', function () {

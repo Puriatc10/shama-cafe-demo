@@ -1,0 +1,247 @@
+/* ============================================================
+   SHAMA — guest reviews
+   ============================================================ */
+
+.rv { position: relative; }
+
+.rv__grid {
+  display: grid;
+  grid-template-columns: 300px minmax(0, 1fr);
+  gap: clamp(20px, 3vw, 40px);
+  align-items: start;
+}
+
+/* ------------------------------------------------------------- score */
+.rv__score {
+  position: sticky;
+  top: calc(var(--nav-h) + 20px);
+  padding: 24px 22px;
+  display: grid;
+  gap: 18px;
+}
+.rv__score-top {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+.rv__avg {
+  font-size: 3rem;
+  font-weight: 800;
+  line-height: 1;
+  letter-spacing: -.03em;
+  background: var(--gold-grad);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+}
+.rv__score-meta { display: grid; gap: 6px; }
+.rv__stars { display: inline-flex; gap: 2px; }
+.rv__count { font-size: .78rem; color: var(--cream-3); }
+
+.rv__bars { display: grid; gap: 7px; }
+.rv__bar-row {
+  display: grid;
+  grid-template-columns: 14px 1fr 20px;
+  align-items: center;
+  gap: 8px;
+  font-size: .72rem;
+  color: var(--cream-3);
+}
+.rv__bar {
+  height: 4px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, .07);
+  overflow: hidden;
+}
+.rv__bar > i {
+  display: block;
+  height: 100%;
+  border-radius: inherit;
+  background: var(--gold-grad-flat);
+  transition: width .8s var(--ease);
+}
+.rv__bar-c { text-align: start; }
+
+.rv__write { width: 100%; }
+
+/* -------------------------------------------------------------- list */
+.rv__list-wrap { min-width: 0; }
+.rv__filters {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-bottom: 18px;
+}
+.rv__hint { margin-inline-start: auto; color: var(--cream-4); }
+
+.rv__list {
+  display: grid;
+  gap: 14px;
+}
+.rv__card {
+  position: relative;
+  padding: 18px 20px 16px;
+  border: 1px solid var(--line);
+  border-radius: var(--r-md);
+  background: linear-gradient(180deg, rgba(255, 255, 255, .035), rgba(255, 255, 255, .01));
+  transition: border-color .5s var(--ease), transform .5s var(--ease);
+}
+.rv__card:hover { border-color: rgba(201, 162, 39, .3); transform: translateY(-2px); }
+.rv__card.is-new { animation: rv-in .7s var(--ease) both; }
+@keyframes rv-in { from { opacity: 0; transform: translateY(-10px); } }
+
+.rv__card-top {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 10px;
+}
+.rv__avatar {
+  width: 38px;
+  height: 38px;
+  flex: none;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  font-weight: 700;
+  font-size: .95rem;
+  color: #17120A;
+  background: var(--gold-grad-flat);
+}
+.rv__who { display: grid; line-height: 1.4; min-width: 0; }
+.rv__who b { font-size: .94rem; font-weight: 600; }
+.rv__date { color: var(--cream-4); font-size: .72rem; }
+.rv__card-stars { margin-inline-start: auto; display: inline-flex; gap: 2px; }
+
+.rv__text {
+  font-size: .9rem;
+  line-height: 1.95;
+  color: var(--cream-2);
+  font-weight: 300;
+}
+.rv__badge {
+  display: inline-block;
+  margin-top: 12px;
+  padding: 3px 10px;
+  border-radius: 999px;
+  font-size: .66rem;
+  font-weight: 600;
+  color: #17120A;
+  background: var(--gold-grad-flat);
+}
+.rv__badge--soft {
+  color: var(--cream-3);
+  background: rgba(255, 255, 255, .05);
+  border: 1px solid var(--line-soft);
+}
+
+.rv__empty {
+  padding: 26px 4px;
+  color: var(--cream-3);
+  font-size: .9rem;
+}
+
+/* -------------------------------------------------------------- stars */
+.rv-star {
+  width: 13px;
+  height: 13px;
+  fill: rgba(242, 232, 216, .18);
+}
+.rv-star.is-on { fill: var(--gold-3); }
+
+/* --------------------------------------------------------------- form */
+.rv__form {
+  margin-top: 26px;
+  padding: clamp(20px, 3vw, 32px);
+  display: grid;
+  gap: 16px;
+  opacity: 0;
+  transform: translateY(-8px);
+  transition: opacity .35s var(--ease), transform .35s var(--ease);
+}
+.rv__form.is-open { opacity: 1; transform: none; }
+.rv__form-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+.rv__form-head h3 { font-size: 1.12rem; }
+.rv__close {
+  width: 36px;
+  height: 36px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  border: 1px solid var(--line);
+  color: var(--cream-2);
+  transition: all .35s var(--ease);
+}
+.rv__close svg { width: 15px; height: 15px; }
+.rv__close:hover { color: var(--gold-4); border-color: var(--line-2); }
+
+.rv__field { display: grid; gap: 7px; }
+.rv__label {
+  font-size: .8rem;
+  font-weight: 500;
+  color: var(--cream-3);
+}
+.rv__opt {
+  font-size: .7rem;
+  color: var(--cream-4);
+  font-weight: 400;
+}
+.rv__row {
+  display: grid;
+  grid-template-columns: 1fr 220px;
+  gap: 14px;
+}
+
+.rv__rate { display: flex; gap: 4px; }
+.rv__rate-btn {
+  width: 40px;
+  height: 40px;
+  display: grid;
+  place-items: center;
+  border-radius: 10px;
+  border: 1px solid transparent;
+  transition: transform .25s var(--ease), background-color .25s;
+}
+.rv__rate-btn svg { width: 26px; height: 26px; fill: rgba(242, 232, 216, .16); transition: fill .2s; }
+.rv__rate-btn.is-on svg { fill: var(--gold-3); }
+.rv__rate-btn:hover { transform: translateY(-2px); background: rgba(201, 162, 39, .08); }
+.rv__rate-btn:focus-visible { outline: 2px solid var(--gold-4); outline-offset: 2px; }
+
+.rv__counter { text-align: end; color: var(--cream-4); }
+.rv__err { color: #E39A7E; font-size: .74rem; }
+
+.rv__form-foot {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+  margin-top: 4px;
+}
+.rv__note { color: var(--cream-4); flex: 1 1 240px; }
+
+/* --------------------------------------------------------- responsive */
+@media (max-width: 900px) {
+  .rv__grid { grid-template-columns: 1fr; }
+  .rv__score { position: static; }
+  .rv__row { grid-template-columns: 1fr; }
+  .rv__card-stars { display: none; }
+}
+@media (max-width: 560px) {
+  .rv__avg { font-size: 2.4rem; }
+  .rv__filters {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+  }
+  .rv__filter { justify-content: center; }
+  .rv__hint { display: none; }
+  .rv__card { padding: 16px; }
+  .rv__bar-row { grid-template-columns: 12px 1fr 18px; gap: 6px; }
+}

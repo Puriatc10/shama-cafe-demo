@@ -137,7 +137,7 @@ window.SHAMA = {
           "desc": "یک عدد برگر دست ساز گوشت مخلوط گوساله و گوسفندی 180 گرمی، پنیر گودا، قارچ، سس مخصوص، کاهو، گوجه، خیار شور، نان برگر",
           "price": 900000,
           "options": [],
-          "img": null,
+          "img": "assets/img/menu/gc1_0.webp",
           "rate": 10
         },
         {
@@ -146,7 +146,7 @@ window.SHAMA = {
           "desc": "دو عدد برگر دست ساز گوشت مخلوط گوساله و گوسفندی 180 گرمی، سس مخصوص، کاهو، گوجه، خیار شور، نان برگر",
           "price": 1250000,
           "options": [],
-          "img": null,
+          "img": "assets/img/menu/gc1_1.webp",
           "rate": 0
         },
         {
@@ -155,7 +155,7 @@ window.SHAMA = {
           "desc": "یک عدد برگر دست ساز گوشت مخلوط گوساله و گوسفندی 180 گرمی، یک ورق ژامبون گوشت 90%، قارچ، سس مخصوص، کاهو، گوجه، خیار شور، نان برگر",
           "price": 950000,
           "options": [],
-          "img": null,
+          "img": "assets/img/menu/gc1_2.webp",
           "rate": 0
         },
         {
@@ -164,7 +164,7 @@ window.SHAMA = {
           "desc": "180 گرم سینه مرغ گریل شده، سس مخصوص، کاهو، گوجه، خیارشور، نان برگر",
           "price": 820000,
           "options": [],
-          "img": null,
+          "img": "assets/img/menu/gc1_3.webp",
           "rate": 0
         },
         {
@@ -414,7 +414,7 @@ window.SHAMA = {
           "desc": "250 میلی لیتر، شیر گرم، پودر ماچا",
           "price": 360000,
           "options": [],
-          "img": null,
+          "img": "assets/img/menu/gc6_0.webp",
           "rate": 0
         },
         {
@@ -423,7 +423,7 @@ window.SHAMA = {
           "desc": "350 میلی لیتر آویشن، چای سبز، نعنا، برگ به لیمو",
           "price": 240000,
           "options": [],
-          "img": null,
+          "img": "assets/img/menu/gc6_1.webp",
           "rate": 0
         },
         {
@@ -432,7 +432,7 @@ window.SHAMA = {
           "desc": "350 میلی لیتر، چای سبز، دارچین، نعنا، سیب",
           "price": 240000,
           "options": [],
-          "img": null,
+          "img": "assets/img/menu/gc6_2.webp",
           "rate": 0
         },
         {
@@ -441,7 +441,7 @@ window.SHAMA = {
           "desc": "350 میلی لیتر، آویشن، زنجبیل، برگ به لیمو",
           "price": 310000,
           "options": [],
-          "img": null,
+          "img": "assets/img/menu/gc6_3.webp",
           "rate": 0
         },
         {
@@ -450,7 +450,7 @@ window.SHAMA = {
           "desc": "250 میلی لیتر، 10 گم پودر ماچا، 20 میلی لیتر وانیل، شیر حرارت دیده",
           "price": 415000,
           "options": [],
-          "img": null,
+          "img": "assets/img/menu/gc6_4.webp",
           "rate": 0
         },
         {
@@ -468,7 +468,7 @@ window.SHAMA = {
           "desc": "250 میلی لیتر، 10 گرم پودر ماچا، 20 میلی لیتر فندوق، شیر حرارت دیده",
           "price": 415000,
           "options": [],
-          "img": null,
+          "img": "assets/img/menu/gc6_6.webp",
           "rate": 0
         },
         {
@@ -495,7 +495,7 @@ window.SHAMA = {
           "desc": "350 میلی لیتر، ترکیب 5 گرم میوه های استوایی، اب جوش",
           "price": 275000,
           "options": [],
-          "img": null,
+          "img": "assets/img/menu/gc6_9.webp",
           "rate": 0
         },
         {
@@ -504,7 +504,7 @@ window.SHAMA = {
           "desc": "350 میلی لیتر، چای سبز، نعنا، پرتقال دارچین",
           "price": 290000,
           "options": [],
-          "img": null,
+          "img": "assets/img/menu/gc6_10.webp",
           "rate": 0
         },
         {
@@ -664,7 +664,7 @@ window.SHAMA = {
           "desc": "350 میلی لیتر، شیر، ماچا، شکلات فندقی، یخ",
           "price": 350000,
           "options": [],
-          "img": null,
+          "img": "assets/img/menu/gc8_5.webp",
           "rate": 0
         },
         {
@@ -673,7 +673,7 @@ window.SHAMA = {
           "desc": "۳۵۰ میلی لیتر، شیر، ماچا، سیروپ نارگیل، یخ",
           "price": 300000,
           "options": [],
-          "img": null,
+          "img": "assets/img/menu/gc8_6.webp",
           "rate": 0
         },
         {

@@ -400,10 +400,28 @@
     if (hint) hint.textContent = faMonthYear(day.d);
     paintSlots(root);
     const btn = $('.rs__date[data-iso="' + iso + '"]', root);
-    if (btn && btn.scrollIntoView) {
-      try { btn.scrollIntoView({ block: 'nearest', inline: 'center', behavior: reduce ? 'auto' : 'smooth' }); } catch (e) {}
-    }
+    centerInStrip(btn);
     clearErr(root);
+  }
+
+
+  /* centre a date chip inside its own strip. scrollIntoView() would also
+     scroll every ancestor — including the page itself, horizontally. */
+  function centerInStrip(btn) {
+    if (!btn) return;
+    const strip = btn.closest('.rs__dates');
+    if (!strip) return;
+    const b = btn.getBoundingClientRect();
+    const s = strip.getBoundingClientRect();
+    const delta = (b.left + b.width / 2) - (s.left + s.width / 2);
+    if (Math.abs(delta) < 2) return;
+    const to = strip.scrollLeft + delta * (document.dir === 'rtl' ? -1 : 1);
+    if (strip.scrollTo) {
+      try { strip.scrollTo({ left: to, behavior: reduce ? 'auto' : 'smooth' }); }
+      catch (e) { strip.scrollLeft = to; }
+    } else {
+      strip.scrollLeft = to;
+    }
   }
 
   function clearErr(root) {
@@ -467,7 +485,10 @@
 
     const title = $('#rs-done-title', root);
     if (title && title.focus) title.focus({ preventScroll: true });
-    try { done.scrollIntoView({ block: 'nearest', behavior: reduce ? 'auto' : 'smooth' }); } catch (e) {}
+    if (done) {
+      const top = done.getBoundingClientRect().top + window.scrollY - 90;
+      window.scrollTo({ top, behavior: reduce ? 'auto' : 'smooth' });
+    }
     S.toast('رزرو شما ثبت شد — ' + fa(st.time));
   }
 
@@ -511,7 +532,10 @@
 
     const nameEl = $('#rs-name', root);
     if (nameEl) nameEl.focus({ preventScroll: true });
-    try { card.scrollIntoView({ block: 'center', behavior: reduce ? 'auto' : 'smooth' }); } catch (e) {}
+    if (card) {
+      const top = card.getBoundingClientRect().top + window.scrollY - 110;
+      window.scrollTo({ top, behavior: reduce ? 'auto' : 'smooth' });
+    }
   }
 
   /* ------------------------------------------------------------- ICS */
